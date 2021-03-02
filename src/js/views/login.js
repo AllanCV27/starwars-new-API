@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
 	const [email, setEmail] = useState("");
@@ -44,7 +45,9 @@ export const Login = () => {
 						placeholder="name@example.com"
 						onChange={e => setEmail(e.target.value)}
 					/>
-					<label htmlFor="floatingInput">Email address</label>
+					<label htmlFor="floatingInput" id="floatingInput">
+						Email address
+					</label>
 				</div>
 				<div className="form-floating">
 					<input
@@ -54,9 +57,14 @@ export const Login = () => {
 						placeholder="Password"
 						onChange={e => setPass(e.target.value)}
 					/>
-					<label htmlFor="floatingPassword">Password</label>
+					<label htmlFor="floatingPassword" id="floatingPassword">
+						Password
+					</label>
 				</div>
-				<input type="submit" className="btn btn-primary" value="Login" />
+				<input type="submit" className="btn btn-warning" value="Login" id="login" />
+				<Link to={"/register"}>
+					<input type="submit" className="btn btn-warning btn-lg btn-block" value="Register" id="registro" />
+				</Link>
 			</form>
 			{redirect ? <Redirect to="/" /> : ""}
 		</div>

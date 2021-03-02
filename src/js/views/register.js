@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Register = () => {
 	const [email, setEmail] = useState("");
@@ -35,6 +36,18 @@ export const Register = () => {
 	return (
 		<div className="text-center mt-5 d-flex justify-content-center align-items-center">
 			<form style={{ width: "400px" }} onSubmit={e => handleSubmit(e)}>
+				<div className="form-floating">
+					<input
+						type="User"
+						className="form-control"
+						id="floatingPassword"
+						placeholder="User"
+						onChange={e => setPass(e.target.value)}
+					/>
+					<label htmlFor="floatingPassword" id="floatingPassword">
+						User
+					</label>
+				</div>
 				<div className="form-floating mb-3">
 					<input
 						type="email"
@@ -43,7 +56,9 @@ export const Register = () => {
 						placeholder="name@example.com"
 						onChange={e => setEmail(e.target.value)}
 					/>
-					<label htmlFor="floatingInput">Email address</label>
+					<label htmlFor="floatingInput" id="floatingPassword">
+						Email address
+					</label>
 				</div>
 				<div className="form-floating">
 					<input
@@ -53,9 +68,13 @@ export const Register = () => {
 						placeholder="Password"
 						onChange={e => setPass(e.target.value)}
 					/>
-					<label htmlFor="floatingPassword">Password</label>
+					<label htmlFor="floatingPassword" id="floatingPassword">
+						Password
+					</label>
 				</div>
-				<input type="submit" className="btn btn-primary" value="Register" />
+				<Link to={"/login"}>
+					<input type="submit" className="btn btn-warning" value="Register" id="registro" />
+				</Link>
 			</form>
 			{redirect ? <Redirect to="/login" /> : ""}
 		</div>
