@@ -26,9 +26,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadPlanets: () => {
 				//fetch().then().then(data => setStore({ "foo": data.bar }))
 
-				fetch("https://www.swapi.tech/api/planets/")
+				fetch("https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/planets/")
 					.then(res => res.json())
 					.then(async data => {
+						console.log(data);
 						let arrayResults = data.results;
 						let planetsArray = [];
 
@@ -44,7 +45,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadPeople: () => {
-				fetch("https://www.swapi.tech/api/people/")
+				fetch("https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/admin/personajes/")
 					.then(res => res.json())
 					.then(async data => {
 						let arrayResults = data.results;
@@ -54,6 +55,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							const res = await fetch(arrayResults[i].url);
 							const json = await res.json();
 							const data = await json.result.properties;
+
 							peopleArray.push(data);
 						}
 
