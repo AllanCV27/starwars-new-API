@@ -7,12 +7,13 @@ export const Planets = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	console.log(store.planets[params.id]);
+
 	return (
 		<div>
 			<div className="jumbotron row">
 				<img
 					className="cardImg col-6"
-					src="https://www.wallpapertip.com/wmimgs/41-415519_desktop-wallpaper-star-wars-planets.jpg"
+					src={store.planets[params.id].imagen}
 					width="400px"
 					height="200"
 					padding="5px"
@@ -32,10 +33,10 @@ export const Planets = () => {
 				<hr className="linea" />
 				<div className="caracteristicas">
 					<ul className="list row">
-						<li className="charaster col-3">Climate: {" " + store.planets[params.id].climate}</li>
-						<li className="charaster col-3">Diameter: {" " + store.planets[params.id].diameter}</li>
-						<li className="charaster col-3">Gravity: {" " + store.planets[params.id].gravity}</li>
-						<li className="charaster col-3">Population: {" " + store.planets[params.id].population}</li>
+						<li className="charaster col-3">Clima: {" " + store.planets[params.id].clima}</li>
+						<li className="charaster col-3">Diametro: {" " + store.planets[params.id].diametro}</li>
+						<li className="charaster col-3">Gravedad: {" " + store.planets[params.id].gravedad}</li>
+						<li className="charaster col-3">Población: {" " + store.planets[params.id].poblacion}</li>
 					</ul>
 					<Link to={"/"}>
 						<span href="#" className="btn btn-warning btn-lg btn-block" id="back">

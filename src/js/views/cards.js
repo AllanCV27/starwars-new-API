@@ -15,7 +15,7 @@ export const Cards = () => {
 						return (
 							<div key={index} className="cards col-2" style={{ width: 18 + "rem" }}>
 								<img
-									src="https://i.pinimg.com/originals/43/47/53/4347539e1e4d8cc9b2e4d755c908a415.jpg"
+									src={element.imagen}
 									width="400"
 									height="200"
 									padding="5px"
@@ -25,15 +25,15 @@ export const Cards = () => {
 								<ul className="carac">
 									<li>
 										<i className="fab fa-jedi-order" />
-										Gender: {element.gender}
+										Genero: {element.genero}
 									</li>
 									<li>
 										<i className="fab fa-jedi-order" />
-										Eye color: {element.eye_color}
+										Mundo de origen: {element.mundo_origen}
 									</li>
 									<li>
 										<i className="fab fa-jedi-order" />
-										Hair color: {element.hair_color}
+										Altura: {element.altura}
 									</li>
 								</ul>
 								<div className="card-body">
@@ -63,7 +63,7 @@ export const Cards = () => {
 						return (
 							<div key={index} className="cards col-2" style={{ width: 18 + "rem" }}>
 								<img
-									src="https://static.wikia.nocookie.net/esstarwars/images/7/73/Eaw_Ralltiir.jpg/revision/latest/top-crop/width/360/height/450?cb=20080427195351"
+									src={element.imagen}
 									width="400"
 									height="200"
 									padding="5px"
@@ -73,15 +73,15 @@ export const Cards = () => {
 								<ul className="carac">
 									<li>
 										<i className="fab fa-jedi-order" />
-										Diameter: {element.diameter}
+										Diametro: {element.diametro}
 									</li>
 									<li>
 										<i className="fab fa-jedi-order" />
-										Gratity: {element.gravity}
+										Gravedad: {element.gravedad}
 									</li>
 									<li>
 										<i className="fab fa-jedi-order" />
-										Terrain: {element.terrain}
+										Terreno: {element.terreno}
 									</li>
 								</ul>
 								<div className="card-body">

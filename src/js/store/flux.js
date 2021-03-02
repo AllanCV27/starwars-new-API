@@ -1,3 +1,5 @@
+import { Login } from "../views/login";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -15,7 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			people: null,
 			planets: null,
-			favorites: []
+			favorites: [],
+			login: false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -30,29 +33,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//.then(data => console.log(data));
 				fetch("https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/planets/")
 					.then(res => res.json())
-					.then(async data => {
+					.then(data => {
 						console.log(data);
-						let arrayResults = data.results;
+						let arrayResults = data.message;
+						setStore({ planets: arrayResults });
 					});
 			},
 
 			loadPeople: () => {
 				fetch("https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/people/")
 					.then(res => res.json())
-					.then(async data => {
-						let arrayResults = data.results;
-						let peopleArray = [];
-
-						for (let i = 0; i < arrayResults.length; i++) {
-							const res = await fetch(arrayResults[i].url);
-							const json = await res.json();
-							const data = await json.result.properties;
-
-							peopleArray.push(data);
-						}
-
-						console.log(peopleArray);
-						setStore({ people: peopleArray });
+					.then(data => {
+						console.log(data);
+						let arrayResults = data.message;
+						setStore({ people: arrayResults });
 					});
 			},
 
