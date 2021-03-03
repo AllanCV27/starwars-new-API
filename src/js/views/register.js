@@ -14,7 +14,7 @@ export const Register = () => {
 		}
 		console.log(email, pass);
 
-		const data = { email: email, password: pass };
+		const data = { email: email, password: pass, username: "Allan" };
 
 		fetch("https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/register", {
 			method: "POST",
@@ -72,9 +72,7 @@ export const Register = () => {
 						Password
 					</label>
 				</div>
-				<Link to={"/login"}>
-					<input type="submit" className="btn btn-warning" value="Register" id="registro" />
-				</Link>
+				<input type="submit" className="btn btn-warning" value="Register" id="registro" />
 			</form>
 			{redirect ? <Redirect to="/login" /> : ""}
 		</div>
