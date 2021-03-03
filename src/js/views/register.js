@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 export const Register = () => {
+	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const [redirect, setRedirect] = useState(false);
@@ -14,7 +15,7 @@ export const Register = () => {
 		}
 		console.log(email, pass);
 
-		const data = { email: email, password: pass, username: "Allan" };
+		const data = { email: email, password: pass, username: username };
 
 		fetch("https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/register", {
 			method: "POST",
@@ -42,7 +43,7 @@ export const Register = () => {
 						className="form-control"
 						id="floatingPassword"
 						placeholder="User"
-						onChange={e => setPass(e.target.value)}
+						onChange={e => setUsername(e.target.value)}
 					/>
 					<label htmlFor="floatingPassword" id="floatingPassword">
 						User
