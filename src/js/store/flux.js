@@ -66,19 +66,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			addName: name => {
+			addName: id => {
 				const store = getStore();
-				store.favorites.push(name);
+				store.favorites.push(id);
 				setStore({ favorites: [...store.favorites] });
 			},
 
 			deleteName: id => {
-				fetch("https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/favorite/" + id)
+				fetch("https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/favorite/" + id, { method: "DELETE" })
 					.then(res => res.json())
 					.then(data => {
 						console.log(data);
+						getActions().loadFav();
 					});
-				getActions().loadFav();
 			},
 
 			changeColor: (index, color) => {

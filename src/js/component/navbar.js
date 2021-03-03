@@ -34,7 +34,9 @@ export const Navbar = () => {
 												<div className="trash">
 													<p className="elemen">{element.name}</p>
 													<button
-														onClick={() => actions.deleteName(element.id)}
+														onClick={() => {
+															actions.deleteName(element.id);
+														}}
 														className="fas fa-trash"
 														id="bote"
 													/>
