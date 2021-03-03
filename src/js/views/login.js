@@ -1,11 +1,13 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Login = () => {
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const [redirect, setRedirect] = useState(false);
+	const { store, actions } = useContext(Context);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -27,6 +29,7 @@ export const Login = () => {
 			.then(data => {
 				console.log("Success:", data);
 				sessionStorage.setItem("u_token", data.token);
+				actions.loadFav();
 				setRedirect(true);
 			})
 			.catch(error => {

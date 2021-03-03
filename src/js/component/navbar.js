@@ -28,12 +28,13 @@ export const Navbar = () => {
 							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								{!!store.favorites &&
 									store.favorites.map((element, index) => {
+										console.log(element);
 										return (
 											<div key={index}>
 												<div className="trash">
-													<p className="elemen">{element}</p>
+													<p className="elemen">{element.name}</p>
 													<button
-														onClick={() => actions.deleteName(index)}
+														onClick={() => actions.deleteName(element.id)}
 														className="fas fa-trash"
 														id="bote"
 													/>

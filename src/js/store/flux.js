@@ -50,16 +50,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
+			loadFav: () => {
+				fetch("https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/users/favorites", {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + sessionStorage.getItem("u_token")
+					}
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log("Success:", data);
+						let arrayResults = data.message;
+						setStore({ favorites: arrayResults });
+					});
+			},
+
 			addName: name => {
 				const store = getStore();
 				store.favorites.push(name);
 				setStore({ favorites: [...store.favorites] });
 			},
 
-			deleteName: index => {
-				const favoritos = getStore().favorites;
-				favoritos.splice(index, 1);
-				setStore({ favorites: [...favoritos] });
+			deleteName: id => {
+				fetch("https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/favorite/" + id)
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+					});
+				getActions().loadFav();
 			},
 
 			changeColor: (index, color) => {
