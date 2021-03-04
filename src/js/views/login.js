@@ -30,6 +30,7 @@ export const Login = () => {
 				console.log("Success:", data);
 				sessionStorage.setItem("u_token", data.token);
 				actions.loadFav();
+				actions.addUser(data.user);
 				setRedirect(true);
 			})
 			.catch(error => {

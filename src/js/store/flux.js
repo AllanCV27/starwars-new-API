@@ -66,10 +66,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			addName: id => {
-				const store = getStore();
-				store.favorites.push(id);
-				setStore({ favorites: [...store.favorites] });
+			addName: (id, type) => {
+				let data = {};
+				if (type == "planeta") {
+					data = { planetas_id: id, personajes_id: null };
+				} else {
+					data = { planetas_id: null, personajes_id: id };
+				}
+				console.log(data, "data");
+				fetch(
+					"https://3000-yellow-armadillo-foo75dkb.ws-us03.gitpod.io/users/" +
+						getStore().user.id +
+						"/favorites",
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+						getActions().loadFav();
+					});
 			},
 
 			deleteName: id => {
@@ -94,6 +115,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			addUser: user => {
+				setStore({ user: user });
 			}
 		}
 	};

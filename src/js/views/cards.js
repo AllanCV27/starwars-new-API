@@ -44,7 +44,7 @@ export const Cards = () => {
 										</span>
 									</Link>
 									<button
-										onClick={() => actions.addName(element.name)}
+										onClick={() => actions.addName(element.id, "personaje")}
 										type="button"
 										className="  cajaBoton btn btn-outline-warning float-right">
 										<i className="far fa-heart text-center" id="corazon" />
@@ -92,7 +92,7 @@ export const Cards = () => {
 										</span>
 									</Link>
 									<button
-										onClick={() => actions.addName(element.name)}
+										onClick={() => actions.addName(element.id, "planeta")}
 										type="button"
 										className="  cajaBoton btn btn-outline-warning float-right">
 										<i className="far fa-heart text-center" id="corazon" />
