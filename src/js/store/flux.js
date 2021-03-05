@@ -18,14 +18,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: null,
 			planets: null,
 			favorites: [],
-			login: false
+			login: false,
+			user: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-
 			loadPlanets: () => {
 				//fetch().then().then(data => setStore({ "foo": data.bar }))
 				//fetch('http://example.com/movies.json')
@@ -64,6 +64,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						let arrayResults = data.message;
 						setStore({ favorites: arrayResults });
 					});
+			},
+			loadLogout: () => {
+				sessionStorage.removeItem("u_token");
+				setStore({ user: null });
+				setStore({ login: false });
 			},
 
 			addName: (id, type) => {

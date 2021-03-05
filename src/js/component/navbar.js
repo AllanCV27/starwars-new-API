@@ -14,17 +14,31 @@ export const Navbar = () => {
 								width="90px"
 							/>
 						</a>
-
+						{store.user ? (
+							<div className="logout">
+								<Link to={"/login"}>
+									<button
+										onClick={() => actions.loadLogout()}
+										className="btn btn-warning"
+										type="button"
+										id="dropdownMenuButton">
+										Logout
+									</button>
+								</Link>
+							</div>
+						) : null}
 						<div className="dropdown">
-							<button
-								className="btn btn-warning dropdown-toggle"
-								type="button"
-								id="dropdownMenuButton"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Favorites
-							</button>
+							{store.user ? (
+								<button
+									className="btn btn-warning dropdown-toggle"
+									type="button"
+									id="dropdownMenuButton"
+									data-toggle="dropdown"
+									aria-haspopup="true"
+									aria-expanded="false">
+									Favorites
+								</button>
+							) : null}
 							<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								{!!store.favorites &&
 									store.favorites.map((element, index) => {

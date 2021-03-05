@@ -25,6 +25,7 @@ const injectContext = PassedComponent => {
 			// state.actions.getCharacters("https://www.swapi.tech/api/people/");
 			state.actions.loadPlanets();
 			state.actions.loadPeople();
+			state.actions.loadLogout();
 
 			/**
 			 * EDIT THIS!

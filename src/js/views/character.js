@@ -7,6 +7,7 @@ export const Character = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 	console.log(store.people[params.id]);
+
 	return (
 		<div>
 			<div className="jumbotron row">
