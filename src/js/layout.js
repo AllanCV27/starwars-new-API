@@ -27,9 +27,11 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Switch>
-						<Route exact path="/">
-							<Cards />
-						</Route>
+						{store.user ? (
+							<Route exact path="/">
+								<Cards />
+							</Route>
+						) : null}
 						<Route exact path="/planets/:id">
 							<Planets />
 						</Route>
